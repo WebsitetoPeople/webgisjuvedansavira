@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="./resources/ol.css">
+        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+        <link rel="stylesheet" href="./resources/qgis2web.css">
+<style>
+.search-layer {
+  top: 100px;
+  left: .5em;
+}
+.ol-touch .search-layer {
+  top: 130px;
+}
+</style>
+        <style>
+        html, body {
+            background-color: #ffffff;
+        }
+        .ol-control button {
+            background-color: #f8f8f8 !important;
+            color: #000000 !important;
+            border-radius: 0px !important;
+        }
+        .ol-zoom, .geolocate, .gcd-gl-control .ol-control {
+            background-color: rgba(255,255,255,.4) !important;
+            padding: 3px !important;
+        }
+        .ol-scale-line {
+            background: none !important;
+        }
+        .ol-scale-line-inner {
+            border: 2px solid #f8f8f8 !important;
+            border-top: none !important;
+            background: rgba(255, 255, 255, 0.5) !important;
+            color: black !important;
+        }
+        </style>
+<style>
+.tooltip {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  color: white;
+  padding: 4px 8px;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+.tooltip-measure {
+  opacity: 1;
+  font-weight: bold;
+}
+.tooltip-static {
+  background-color: #ffcc33;
+  color: black;
+  border: 1px solid white;
+}
+.tooltip-measure:before,
+.tooltip-static:before {
+  border-top: 6px solid rgba(0, 0, 0, 0.5);
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  margin-left: -7px;
+  left: 50%;
+}
+.tooltip-static:before {
+  border-top-color: #ffcc33;
+}
+.measure-control {
+  top: 65px;
+  left: .5em;
+  display: flex;
+}
+.ol-touch .measure-control {
+  top: 80px;
+}
+.measure-control label {
+  padding: 1px;
+  padding-right: 4px;
+}
+</style>
+        <style>
+        #map {
+            width: 876px;
+            height: 493px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+	<hr>
+	<h3><p align="center"> | UAS ANALISIS SPASIAL | 
+	<h3><p align="center">  PENDIDIKAN GEOGRAFI 2022A
+	<h3><p align="center">  FAKULTAS ILMU SOSIAL DAN HUKUM
+	<h3><p align="center">  UNIVERSITAS NEGERI SURABAYA 
+	<hr></p>
+	<body bgcolor='yellow' text='black'>
+	<h2><font color="blue"><u>Website Spasial</font></h2></u>
+	<hr>
+	<h3> PETA PENGGUNAAN LAHAN KOTA SURABAYA TAHUN 2023</H3>
+	<h3> Kecamatan Rungkut, Kecamatan Gunung Anyar, dan Kecamatan Tenggilis Mejoyo</H3>
+	<h3> Oleh kelompok 2 </h3>
+	<h3>
+		</ul>
+			<li>1. Juve Ratu Vennus (22040274028)</li>
+			<li>2. Savira Yanisa Putri(22040274046)</li>
+	<h2><font color="blue">Analisis Spasial</font></h2></u>
+        <div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+        <script src="resources/qgis2web_expressions.js"></script>
+        <script src="resources/polyfills.js"></script>
+        <script src="./resources/functions.js"></script>
+        <script src="./resources/ol.js"></script>
+        <script src="./resources/ol-layerswitcher.js"></script>
+        <script src="layers/bangunangeojson_1.js"></script><script src="layers/industrigeojson_2.js"></script><script src="layers/lahankosonggeojson_3.js"></script><script src="layers/mangrovegeojson_4.js"></script><script src="layers/Permukimanteraturgeojson_5.js"></script><script src="layers/permukimantidakteraturgeojson_6.js"></script><script src="layers/sawahgeojson_7.js"></script><script src="layers/Tambak_8.js"></script><script src="layers/wadukgeojson_9.js"></script><script src="layers/PenggunaanLahan_10.js"></script><script src="layers/jalangeojson_11.js"></script>
+        <script src="styles/bangunangeojson_1_style.js"></script><script src="styles/industrigeojson_2_style.js"></script><script src="styles/lahankosonggeojson_3_style.js"></script><script src="styles/mangrovegeojson_4_style.js"></script><script src="styles/Permukimanteraturgeojson_5_style.js"></script><script src="styles/permukimantidakteraturgeojson_6_style.js"></script><script src="styles/sawahgeojson_7_style.js"></script><script src="styles/Tambak_8_style.js"></script><script src="styles/wadukgeojson_9_style.js"></script><script src="styles/PenggunaanLahan_10_style.js"></script><script src="styles/jalangeojson_11_style.js"></script>
+        <script src="./layers/layers.js" type="text/javascript"></script> 
+        <script src="./resources/Autolinker.min.js"></script>
+        <script src="./resources/qgis2web.js"></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		
+		<h3>PERBANDINGAN LUAS PENGGUNAAN LAHAN KECAMATAN RUNGKUT, GUNUNG ANYAR, DAN TENGGILIS MEJOYO</H3>
+		<h2><font color="purple">Spasial Statistik</font></h2></u>
+		<body>
+	<div style="width: 80%; margin: auto;">
+        <canvas id="perubahanLahanChart"></canvas>
+    </div>
+</body>
+<script>
+// Data perubahan penggunaan lahan
+         var dataPerubahanLahan = [
+            { jenis: 'Pemukiman Tidak Teratur', pl2019: 1777, pl2023: 973 },
+            { jenis: 'Pemukiman Teratur', pl2019: 127, pl2023: 249 },
+            { jenis: 'Tambak', pl2019: 887, pl2023:  947},
+            { jenis: 'Sawah', pl2019: 146, pl2023: 111 },
+            { jenis: 'Bangunan Universitas', pl2019: 56, pl2023: 280 },
+            { jenis: 'Waduk', pl2019: 8, pl2023: 8 },
+            { jenis: 'Industri', pl2019: 247, pl2023: 249 },
+			{ jenis: 'Lahan Kosong', pl2019: 353, pl2023: 313 },
+			{ jenis: 'Mangrove', pl2019: 85, pl2023: 90},
+            // ... tambahkan data lainnya sesuai kebutuhan ...
+        ];
+
+        // Inisialisasi chart
+        var ctx = document.getElementById('perubahanLahanChart').getContext('2d');
+        var perubahanLahanChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dataPerubahanLahan.map(item => item.jenis),
+                datasets: [{
+                    label: 'PL 2019',
+                    backgroundColor: 'rgb(186, 85, 211)',
+                    borderColor: 'rgb(147, 112, 219)',
+                    borderWidth: 1,
+                    data: dataPerubahanLahan.map(item => item.pl2019)
+                }, {
+                    label: 'PL 2023',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(99, 255, 132, 1)',
+                    borderWidth: 1,
+                    data: dataPerubahanLahan.map(item => item.pl2023)
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+	</script>
+    </body>
+</html>
